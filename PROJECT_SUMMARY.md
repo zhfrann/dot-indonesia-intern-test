@@ -6,7 +6,7 @@
 **Author:** Muhammad Zhafran Ilham  
 **Purpose:** DOT Indonesia Internship Application  
 **Framework:** NestJS 11 with TypeScript  
-**Database:** MySQL/MariaDB with Prisma ORM  
+**Database:** MySQL with Prisma ORM v7
 
 ---
 
@@ -36,19 +36,13 @@
 - Tests JWT token generation
 - Tests protected endpoints (with/without token)
 - Tests authorization (user ownership)
-- 30+ test cases covering all scenarios
 
 ### e. Project Pattern
 - **Layered Architecture Pattern** (Module-based)
 - Clear separation of concerns
-- Controller → Service → Repository layers
+- Controller → Logic Service → Prisma Service -> Database
 - DTOs for validation
 - Guards for authentication
-
-### f. Pattern Explanation in README
-- Detailed explanation in README.md
-- Additional ARCHITECTURE.md with diagrams
-- Reasons for pattern selection documented
 
 ---
 
@@ -149,48 +143,6 @@ Post:
 - 404: Not Found (resource not found)
 - 500: Internal Server Error
 
----
-
-## Testing Coverage
-
-### E2E Tests (auth.e2e-spec.ts)
-Total Test Cases: 30+
-
-**Authentication Tests:**
-- User registration (valid)
-- Registration with invalid email
-- Registration with short password
-- Registration with duplicate email
-- Login with valid credentials
-- Login with wrong password
-- Login with non-existent user
-
-**Protected Endpoint Tests:**
-- Access without token (401)
-- Access with invalid token (401)
-- Access with valid token (200)
-- Missing Bearer prefix (401)
-- Empty Authorization header (401)
-
-**User CRUD Tests:**
-- Get all users
-- Get user by ID
-- User not found (404)
-
-**Post CRUD Tests:**
-- Create post with token
-- Create post without token (401)
-- Get all posts
-- Get post by ID
-- Update own post
-- Update without token (401)
-- Delete own post
-- Delete without token (401)
-
-**Authorization Tests:**
-- User can only update own posts
-- User can only delete own posts
-
 ### Running Tests
 ```bash
 # E2E Tests
@@ -218,7 +170,7 @@ npm run test:cov
 |--------|--------------------|--------------------------|
 | GET    | /users            | Get all users            |
 | GET    | /users/:id        | Get user by ID           |
-| POST   | /users            | Create new user          |
+| POST   | /users            | Create new user (same with register user) |
 | PUT    | /users/:id        | Update user              |
 | DELETE | /users/:id        | Delete user              |
 | GET    | /posts            | Get all posts            |
@@ -276,30 +228,8 @@ Service (Business Logic)
     ↓
 Prisma (Database Access)
     ↓
-MySQL/MariaDB
+MySQL
 ```
-
----
-
-## Documentation Files
-
-1. **README.md** - Main documentation, installation, usage
-2. **API_DOCUMENTATION.md** - Detailed API endpoints with examples
-3. **ARCHITECTURE.md** - Deep dive into architecture pattern
-4. **QUICKSTART.md** - 5-minute quick start guide
-5. **PROJECT_SUMMARY.md** - This file, project overview
-
----
-
-## Security Features
-
-- Password hashing with bcrypt
-- JWT token with expiration
-- Secret key from environment variables
-- Input validation and sanitization
-- SQL injection prevention (Prisma)
-- Authorization checks (ownership)
-- No sensitive data in responses
 
 ---
 
@@ -321,54 +251,6 @@ MySQL/MariaDB
 - typescript - Type safety
 - prisma - Database CLI
 - prettier, eslint - Code formatting
-
----
-
-## Learning Points
-
-This project demonstrates understanding of:
-
-1. **NestJS Framework**
-   - Modules, Controllers, Services
-   - Dependency Injection
-   - Guards and Strategies
-   - Pipes and DTOs
-
-2. **TypeScript**
-   - Strong typing
-   - Decorators
-   - Interfaces
-   - Generics
-
-3. **Database Design**
-   - Relational modeling
-   - Foreign keys
-   - Migrations
-   - ORM usage
-
-4. **Authentication & Authorization**
-   - JWT implementation
-   - Password security
-   - Protected routes
-   - Ownership checks
-
-5. **Testing**
-   - E2E testing
-   - Test-driven development
-   - Mocking
-   - Test coverage
-
-6. **Software Architecture**
-   - Layered pattern
-   - SOLID principles
-   - Clean code
-   - Best practices
-
-7. **DevOps Basics**
-   - Environment variables
-   - Database migrations
-   - Build process
-   - Documentation
 
 ---
 
@@ -400,62 +282,8 @@ Application runs at: http://localhost:3000
 
 ---
 
-## Project Statistics
-
-- **Total Files Created:** 25+
-- **Lines of Code:** ~2000+
-- **Test Cases:** 30+
-- **API Endpoints:** 12
-- **Database Tables:** 2 (with relations)
-- **Modules:** 5 (App, Auth, User, Post, Prisma)
-- **Documentation Pages:** 5
-
----
-
-## Future Improvements
-
-If given more time, these features could be added:
-
-- Refresh token mechanism
-- Role-based access control (Admin, User)
-- Pagination for list endpoints
-- Search and filtering
-- Rate limiting
-- Logging system (Winston)
-- API versioning
-- Swagger/OpenAPI documentation
-- Docker containerization
-- CI/CD pipeline (GitHub Actions)
-- More comprehensive error messages
-- File upload for user avatars
-- Email verification
-- Password reset functionality
-- Soft delete functionality
-- Audit logging
-
----
-
-## Conclusion
-
-This project successfully demonstrates:
-
-All required features implemented  
-Clean architecture pattern  
-Comprehensive testing  
-Detailed documentation  
-Production-ready code quality  
-Best practices followed  
-Scalable design  
-Security considerations  
-
-**Status:** READY FOR SUBMISSION
-
-The project is simple yet complete, following professional standards while remaining easy to understand and maintain. Perfect for demonstrating skills in a real-world internship scenario.
-
----
-
 **Author:** Muhammad Zhafran Ilham  
-**Date:** February 2024  
+**Date:** February 2026
 **Purpose:** DOT Indonesia Internship Application  
 **Framework:** NestJS 11 + TypeScript  
-**Database:** MySQL + Prisma ORM
+**Database:** MySQL + Prisma ORM v7

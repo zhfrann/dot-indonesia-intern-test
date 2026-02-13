@@ -18,7 +18,7 @@ Simple RESTful API built with NestJS and TypeScript featuring JWT authentication
 
 - JWT Authentication (Register & Login)
 - Two related CRUD operations (Users & Posts)
-- SQL Database (MySQL/MariaDB) with Prisma ORM
+- SQL Database (MySQL) with Prisma ORM v7
 - Input validation with class-validator
 - E2E testing for authentication
 - Type-safe with TypeScript
@@ -28,10 +28,10 @@ Simple RESTful API built with NestJS and TypeScript featuring JWT authentication
 
 - **Framework**: NestJS 11
 - **Language**: TypeScript
-- **Database**: MySQL/MariaDB
-- **ORM**: Prisma
+- **Database**: MySQL
+- **ORM**: Prisma v7
 - **Authentication**: JWT (JSON Web Token)
-- **Validation**: class-validator & class-transformer
+- **Validation**: class-validator
 - **Testing**: Jest & Supertest
 - **Password Hashing**: bcrypt
 
@@ -149,8 +149,8 @@ Edit `.env` file dengan konfigurasi database Anda:
 DATABASE_HOST=localhost
 DATABASE_USER=root
 DATABASE_PASSWORD=your_password
-DATABASE_NAME=nestjs_internship
-JWT_SECRET=your-secret-key-change-this
+DATABASE_NAME=dot_internship
+JWT_SECRET=rahasia123
 PORT=3000
 ```
 
@@ -159,7 +159,7 @@ PORT=3000
 Create database di MySQL/MariaDB:
 
 ```sql
-CREATE DATABASE nestjs_internship;
+CREATE DATABASE dot_internship;
 ```
 
 5. **Run migrations**
@@ -334,29 +334,12 @@ model Post {
 2. Password di-hash menggunakan bcrypt (10 rounds)
 3. User login via `/auth/login`
 4. JWT token di-generate dengan payload `{ sub: userId, email: userEmail }`
-5. Token expired dalam 1 jam
-6. Client menyimpan token dan mengirimkannya di header:
+5. Client menyimpan token dan mengirimkannya di header:
    ```
    Authorization: Bearer <token>
    ```
-7. Protected routes menggunakan `JwtAuthGuard`
-8. Guard validates token dan inject user data ke request object
-
-## Future Improvements
-
-Jika ada waktu, berikut improvement yang bisa ditambahkan:
-
-- Refresh token mechanism
-- Role-based access control (RBAC)
-- Pagination untuk list endpoints
-- Search & filtering
-- Rate limiting
-- Logging dengan Winston
-- API documentation dengan Swagger
-- Docker containerization
-- CI/CD pipeline
-- More comprehensive error handling
-- File upload untuk user avatar
+6. Protected routes menggunakan `JwtAuthGuard`
+7. Guard validates token dan inject user data ke request object
 
 ## Author
 
@@ -368,4 +351,4 @@ UNLICENSED - For internship purposes only.
 
 ---
 
-**Note**: Project ini dibuat untuk keperluan pendaftaran magang di DOT Indonesia. Strukturnya dibuat simple namun scalable untuk memudahkan development dan maintenance di masa depan.
+**Note**: Project ini dibuat untuk keperluan pendaftaran magang di DOT Indonesia.

@@ -44,9 +44,7 @@ Each layer has a single, well-defined responsibility:
 │                  NestJS Application                     │
 │  ┌───────────────────────────────────────────────────┐  │
 │  │           Middleware Layer                        │  │
-│  │  - Global Exception Filter                        │  │
 │  │  - Global Validation Pipe                         │  │
-│  │  - CORS, Helmet, etc.                             │  │
 │  └───────────────────┬───────────────────────────────┘  │
 │                      │                                  │
 │                      ↓                                  │
@@ -74,7 +72,6 @@ Each layer has a single, well-defined responsibility:
 │  │  Responsibilities:                                │  │
 │  │  • Implement business logic                       │  │
 │  │  • Validate business rules                        │  │
-│  │  • Coordinate between repositories                │  │
 │  │  • Handle transactions                            │  │
 │  └───────────────────┬───────────────────────────────┘  │
 │                      │                                  │
@@ -86,8 +83,6 @@ Each layer has a single, well-defined responsibility:
 │  │  Responsibilities:                                │  │
 │  │  • Database connections                           │  │
 │  │  • CRUD operations                                │  │
-│  │  • Query optimization                             │  │
-│  │  • Type-safe database access                      │  │
 │  └───────────────────┬───────────────────────────────┘  │
 │                      │                                  │
 └──────────────────────┼──────────────────────────────────┘
@@ -293,7 +288,6 @@ Post:
 ### Design Decisions
 
 - **One-to-Many**: One user can have many posts
-- **Cascade**: Posts are kept when user is deleted (can be changed)
 - **Indexes**: Auto-indexed on foreign keys
 - **Constraints**: Email uniqueness enforced at DB level
 
